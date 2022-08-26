@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang=cn>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        认识C++中的引用 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 远离舒适区 , 行动起来才能有所收获 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar radius">
+            <img src="/img/avatar.png" />
+        </div>
+        <div class="name">
+            <i>枫叶</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>COLLECT</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86C-%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8"><span class="toc-text">认识C++中的引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-C-%E4%B8%AD%E5%BC%95%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">1.C++中引用是什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-C-%E4%B8%AD%E7%9A%84%E5%80%BC%E4%BC%A0%E9%80%92-%E5%9C%B0%E5%9D%80%E4%BC%A0%E9%80%92-%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92"><span class="toc-text">2.C++中的值传递 , 地址传递 , 引用传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BC%95%E7%94%A8%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-text">3.引用的本质:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BA%86%E8%A7%A3%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8"><span class="toc-text">4.了解常量引用:</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 远离舒适区 , 行动起来才能有所收获 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        认识C++中的引用
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2022-08-26 21:36:44</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C++" title="C++">C++</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="认识C-中的引用"><a href="#认识C-中的引用" class="headerlink" title="认识C++中的引用"></a>认识C++中的引用</h1><h3 id="1-C-中引用是什么"><a href="#1-C-中引用是什么" class="headerlink" title="1.C++中引用是什么?"></a>1.C++中引用是什么?</h3><p>定义: 引用就是给一个变量其别名</p>
+<p>语法: <code>数据类型 &amp;别名 = 原名</code></p>
+<p>示例:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by cuppa on 2022/8/26.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引用的使用:</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> &amp;b = a;</span><br><span class="line">    <span class="type">int</span> c = <span class="number">20</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a=&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;, b=&quot;</span> &lt;&lt; b &lt;&lt; <span class="string">&quot;, c=&quot;</span> &lt;&lt; c &lt;&lt; endl;</span><br><span class="line">    b = c;<span class="comment">//当这样写并不是改变引用而是赋值 , 由于是b是a的别名 ,那么理所应当a也就为20了</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a=&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;, b=&quot;</span> &lt;&lt; b &lt;&lt; <span class="string">&quot;, c=&quot;</span> &lt;&lt; c &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/26/%E8%AE%A4%E8%AF%86C-%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8/result1.png" alt="result如图"></p>
+<p>注意事项: 引用一定要在初始化时 , 声明其中的指向 , 并且之后不可以更改</p>
+<h3 id="2-C-中的值传递-地址传递-引用传递"><a href="#2-C-中的值传递-地址传递-引用传递" class="headerlink" title="2.C++中的值传递 , 地址传递 , 引用传递"></a>2.C++中的值传递 , 地址传递 , 引用传递</h3><p>下面的例子中value_tran为值传递 , point_tran为地址传递 , quote_tran为引用传递</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by cuppa on 2022/8/26.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">value_tran</span><span class="params">(<span class="type">int</span> a , <span class="type">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;in_value&quot;</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a = &quot;</span> &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;b = &quot;</span> &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">point_tran</span><span class="params">(<span class="type">int</span> *a , <span class="type">int</span> *b)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">point_tran_printer</span><span class="params">(<span class="type">int</span> *a , <span class="type">int</span> *b)</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;in_point_out&quot;</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;*a = &quot;</span> &lt;&lt; *a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;*b = &quot;</span> &lt;&lt; *b &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quote_tran</span><span class="params">(<span class="type">int</span> &amp;a , <span class="type">int</span> &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quote_tran_printer</span><span class="params">(<span class="type">int</span> &amp;a , <span class="type">int</span> &amp;b)</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;in_quote_out&quot;</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a = &quot;</span> &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;b = &quot;</span> &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//引用的使用:</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">20</span>;</span><br><span class="line">    <span class="comment">//值传递不会真正的交换值</span></span><br><span class="line">    <span class="built_in">value_tran</span>(a,b);</span><br><span class="line">    <span class="type">int</span> *pa = &amp;a;</span><br><span class="line">    <span class="type">int</span> *pb = &amp;b;</span><br><span class="line">    <span class="comment">//地址传递会真正的交换值</span></span><br><span class="line">    <span class="built_in">point_tran</span>(pa,pb);</span><br><span class="line">    <span class="built_in">point_tran_printer</span>(pa,pb);</span><br><span class="line">    <span class="comment">//由于地址传递是真正的改变数值... , 为了后面好理解 , 我们改变它们的值</span></span><br><span class="line">    *pa = <span class="number">10</span>;</span><br><span class="line">    *pb = <span class="number">20</span>;</span><br><span class="line">    <span class="type">int</span> &amp;I = a;</span><br><span class="line">    <span class="type">int</span> &amp;II = b;</span><br><span class="line">    <span class="comment">//引用传递会真正的改变值 , 美观也好用 , C++推荐使用这种方案</span></span><br><span class="line">    <span class="built_in">quote_tran</span>(I,II);</span><br><span class="line">    <span class="built_in">quote_tran_printer</span>(I,II);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-引用的本质"><a href="#3-引用的本质" class="headerlink" title="3.引用的本质:"></a>3.引用的本质:</h3><p>引用本质上就是一个常量指针</p>
+<blockquote>
+<p> 引用的特性不能改变指向 , 就如同常量指针一样</p>
+</blockquote>
+<p>示例如下:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    <span class="type">int</span> a0 = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> &amp;a1 = a0; <span class="comment">// 此时编译器解释为: int * const a1 = &amp;a0</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-了解常量引用"><a href="#4-了解常量引用" class="headerlink" title="4.了解常量引用:"></a>4.了解常量引用:</h3><p>常量引用可以避免数据被修改 , 增加程序的安全性.</p>
+<p>例如在一个函数中 , 函数的参数用来打印 , 那么就不应该修改它 , 此时可以使用常量引用.</p>
+<p>或者用户输入的一个标志性质的信息 , 程序根据它进行选择操作 , 此时也不应当修改它.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by cuppa on 2022/8/26.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">say</span><span class="params">(<span class="type">const</span> <span class="type">int</span> &amp;b)</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;hello , you say &quot;</span> &lt;&lt; b &lt;&lt;  endl;</span><br><span class="line">    <span class="comment">//b = 100;//此时不可以修改b的值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//引用的使用:</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> &amp;b = a;</span><br><span class="line">    <span class="built_in">say</span>(b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>
